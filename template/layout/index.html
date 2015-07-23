@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{site.title}}{% endblock %}
+{% block head %}
+{% parent %}
+{% endblock %}
+{% block content %}
+    {% for article in articles %}
+    <article class="index">
+        <header>
+            <a href="{{article.url}}">
+                <h1 itemprop="name">{{article.title}}</h1>
+            </a>
+            <time>{{article.date | date('Y-m-d H:i')}}</time>
+            <a class="disqus-comment-count" href="{{article.url}}#disqus_thread">0 Comments</a>
+        </header>
+    </article>
+    {% endfor %}
+    {% if paginator.next or paginator.previous %}
+    <div class="pagination">
+        <div class="next">
+            {% if paginator.previous %}
+            <a href="{{paginator.urls[paginator.previous]}}">Newer Posts</a>
+            {% endif %}
+        </div>
+        <div class="prev">
+            {% if paginator.next %}
+            <a href="{{paginator.urls[paginator.next]}}">Older Posts</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

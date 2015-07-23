@@ -1,0 +1,11 @@
+<div id="mobile-nav">
+    <nav role="navigation">
+        <ul>
+            <li><a href="{{site.root}}">Home</a></li>
+            {% for page in site.pages %}
+            <li><a href="{{page.url}}">{{page.title}}</a></li>
+            {% endfor %}
+            <li><a href="{{site.root}}archive">archive</a></li>
+        </ul>
+    </nav>
+</div>

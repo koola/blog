@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{site.title}} - {{article.title}}{% endblock %}
+{% block content %}
+    <article>
+        <div class="body">
+            {{article.content}}
+        </div>
+    </article>
+{% endblock %}

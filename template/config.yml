@@ -1,0 +1,29 @@
+## Website
+title:              jmerson.me
+subtitle:           A static blog
+host:               http://localhost
+root:               /
+
+## Output
+archive_dir:        archive
+category_dir:       category
+tag_dir:            tag
+post_link:          post/:year/:month/:day/:name.html
+page_link:          page/:name
+paginate:           10
+
+## Engine
+latex:              false
+subscribe:          true
+
+## Server
+port:               8080
+password:           false
+
+## Comments
+comments:           true
+disqus_shortname:   jmersonme
+
+# Social
+github:             https://github.com/koola
+linkedin:           https://cn.linkedin.com/pub/james-merson/27/80b/b11

@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{site.title}} - {{article.title}}{% endblock %}
+{% block head %}
+{% parent %}
+    <link rel="stylesheet" href="{{site.root}}static/code.min.css">
+{% endblock %}
+{% block content %}
+    <article>
+        <header>
+            <h1>{{article.title}}</h1>
+            <time>{{article.date | date('Y-m-d H:i')}}</time>
+        </header>
+        <div class="body">
+            {{article.content}}
+        </div>
+        <footer>
+            {% if article.categories -%}
+            Categories:
+            {% for category in article.categories -%}
+            <a class="categories" href="{{site.root}}{{site.category_dir}}/{{category | lower}}/">{{category}}</a>
+            {%- endfor %}
+            {%- endif %}
+            {% if article.tags -%}
+            Tags:
+            {% for tag in article.tags -%}
+            <a class="tags" href="{{site.root}}{{site.tag_dir}}/{{tag | lower}}/">{{tag}}</a>
+            {%- endfor %}
+            {%- endif %}
+        </footer>
+    </article>
+    <div class="pagination">
+        <div class="next">
+        {% if article.next %}
+            <a href="{{article.next.url}}">{{article.next.title}}</a>
+        {% endif %}
+        </div>
+        <div class="prev">
+        {% if article.previous %}
+            <a href="{{article.previous.url}}">{{article.previous.title}}</a>
+        {% endif %}
+        </div>
+    </div>
+    {% if site.comments and site.disqus_shortname %}
+    <div id="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            (function(){
+                var dsq=document.createElement('script');
+                dsq.type='text/javascript';dsq.async=true;dsq.src='//{{site.disqus_shortname}}.disqus.com/embed.js';
+                document.getElementsByTagName('head')[0].appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    {% endif %}
+{% endblock %}

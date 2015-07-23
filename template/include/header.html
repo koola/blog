@@ -1,0 +1,13 @@
+<header id="site-header">
+    <h1>James Merson</h1>
+    <nav role="navigation">
+        <ul>
+            <li><a href="{{site.root}}">Home</a></li>
+            {% for page in site.pages %}
+            <li><a href="{{page.url}}">{{page.title}}</a></li>
+            {% endfor %}
+            <li><a href="{{site.root}}archive">archive</a></li>
+        </ul>
+    </nav>
+    <label for="mobileNavToggle" class="mobile-nav-toggle-label"><div class="top-bar"></div><div class="middle-bar"></div><div class="bottom-bar"></div></label>
+</header>
